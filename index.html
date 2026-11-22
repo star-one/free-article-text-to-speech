@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Broadsheet Article Text-to-Speech — Standalone Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <header class="masthead">
+      <p class="kicker">Open-Source Web Speech API Component</p>
+      <h1>Broadsheet Audio Edition</h1>
+      <p class="subtitle">In-place DOM word highlighting with active-only narrator voice and speed controls.</p>
+    </header>
+
+    <article class="article">
+      <header class="article-header">
+        <p class="article-kicker">Civic Technology &amp; Publishing</p>
+        <h2>Why In-Place DOM Highlighting Matters for Web Articles</h2>
+        <p class="byline">By <strong>Simon Gray</strong> &bull; <time datetime="2026-11-22">November 22, 2026</time></p>
+      </header>
+
+      <!-- Audio Edition Control Bar -->
+      <div id="speechPlayer" class="tts-console" role="region" aria-label="Audio edition reader">
+        <span class="tts-label">Audio Edition:</span>
+        <button type="button" id="play" class="tts-btn">&#9654; Read Aloud</button>
+        <button type="button" id="pause" class="tts-btn" hidden disabled>&#10074;&#10074; Pause</button>
+        <button type="button" id="stop" class="tts-btn" hidden disabled>&#9632; Stop</button>
+      </div>
+
+      <!-- Target Article Body (#text) -->
+      <div id="text" class="article-body">
+        <p>Many browser-based text-to-speech demonstrations strip away an article&rsquo;s rich HTML formatting and dump plain text into a preformatted block while reading. That approach breaks multi-column layouts, removes links, and interrupts the visual hierarchy of the page.</p>
+
+        <p>Instead, this lightweight script uses a native <code>TreeWalker</code> and the <code>Range</code> API to map spoken character offsets directly onto live text nodes inside the article container. Each word is wrapped in a <code>&lt;mark&gt;</code> element in place and cleanly restored as playback advances.</p>
+
+        <h3>Adaptive Controls</h3>
+        <p>When idle, only the <strong>Read Aloud</strong> button is displayed so the reading interface stays uncluttered. Once playback begins, <em>Pause</em>, <em>Stop</em>, a narrator <em>Voice</em> selector, and a <em>Speed</em> selector appear automatically—and changing voice or speed mid-sentence resumes seamlessly from the current word.</p>
+      </div>
+    </article>
+  </main>
+
+  <script src="tts.js" defer></script>
+</body>
+</html>
